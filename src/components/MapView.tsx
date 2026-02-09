@@ -61,8 +61,10 @@ const MapView = ({ center, zoom, buses, selectedRoute, onSelectBus }: MapViewPro
       attributionControl={false}
     >
       <TileLayer
-        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+        url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+        subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
+        attribution='&copy; Google Maps'
+        maxZoom={20}
       />
       <MapUpdater center={center} zoom={zoom} />
 

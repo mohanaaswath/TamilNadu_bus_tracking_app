@@ -20,8 +20,8 @@ const RouteSearch = ({ selectedDistrict, selectedRoute, onSelectRoute }: RouteSe
 
   return (
     <div>
-      <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">
-        Search Routes
+      <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+        🔍 Search Routes
       </label>
       <div className="relative mb-2">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -30,25 +30,25 @@ const RouteSearch = ({ selectedDistrict, selectedRoute, onSelectRoute }: RouteSe
           placeholder="Route ID or name..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full rounded-lg border border-border bg-card pl-9 pr-4 py-2 text-sm text-card-foreground placeholder:text-muted-foreground shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+          className="w-full rounded-xl border border-border bg-card pl-9 pr-4 py-2.5 text-sm text-card-foreground placeholder:text-muted-foreground shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary hover:shadow-md"
         />
       </div>
-      <div className="max-h-48 overflow-y-auto space-y-0.5 scrollbar-thin">
+      <div className="max-h-48 overflow-y-auto space-y-1 scrollbar-thin">
         {filteredRoutes.length === 0 && (
-          <p className="text-xs text-muted-foreground py-2 text-center">No routes found</p>
+          <p className="text-xs text-muted-foreground py-3 text-center">No routes found</p>
         )}
         {filteredRoutes.map((route) => (
           <button
             key={`${route.district}-${route.routeId}`}
             onClick={() => onSelectRoute(selectedRoute?.routeId === route.routeId && selectedRoute?.district === route.district ? null : route)}
-            className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+            className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-all ${
               selectedRoute?.routeId === route.routeId && selectedRoute?.district === route.district
-                ? "bg-primary text-primary-foreground"
-                : "hover:bg-muted text-card-foreground"
+                ? "bg-primary text-primary-foreground shadow-md"
+                : "hover:bg-muted text-card-foreground hover:shadow-sm"
             }`}
           >
             <span className="font-bold mr-2">{route.routeId}</span>
-            <span className="text-xs opacity-80">{route.routeName}</span>
+            <span className="text-xs opacity-75">{route.routeName}</span>
           </button>
         ))}
       </div>

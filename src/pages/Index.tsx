@@ -49,7 +49,6 @@ const Index = () => {
     if (route) setSelectedRoute(route);
   };
 
-  // Keep selected bus data updated
   const activeBus = useMemo(() => {
     if (!selectedBus) return null;
     return buses.find((b) => b.busId === selectedBus.busId) || selectedBus;
@@ -64,8 +63,8 @@ const Index = () => {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
-        <aside className="w-80 flex-shrink-0 bg-card border-r border-border flex flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-4 space-y-5">
+        <aside className="w-80 flex-shrink-0 bg-card border-r border-border flex flex-col overflow-hidden shadow-lg">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
             <DistrictSelector
               selectedDistrict={selectedDistrictId}
               onSelect={handleDistrictChange}
@@ -90,7 +89,7 @@ const Index = () => {
 
           {/* Bus detail panel at bottom */}
           {activeBus && (
-            <div className="border-t border-border p-3">
+            <div className="border-t border-border p-3 bg-card">
               <BusInfoPanel bus={activeBus} onClose={() => setSelectedBus(null)} />
             </div>
           )}
@@ -107,10 +106,10 @@ const Index = () => {
           />
 
           {/* Stats overlay */}
-          <div className="absolute bottom-4 left-4 transit-panel px-3 py-2 text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">38</span> Districts •{" "}
-            <span className="font-semibold text-foreground">{routes.length}</span> Routes •{" "}
-            Updates every <span className="font-semibold text-foreground">2s</span>
+          <div className="absolute bottom-4 left-4 bg-card/95 backdrop-blur-sm border border-border rounded-xl px-4 py-2.5 text-xs text-muted-foreground shadow-lg">
+            <span className="font-bold text-primary">38</span> Districts •{" "}
+            <span className="font-bold text-primary">{routes.length}</span> Routes •{" "}
+            Updates every <span className="font-bold text-primary">2s</span>
           </div>
         </main>
       </div>

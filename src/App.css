@@ -7,13 +7,24 @@
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Pulse effect on bus markers */
+/* RedBus-style pulse on bus markers */
 @keyframes bus-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(234, 120, 30, 0.5); }
-  70% { box-shadow: 0 0 0 10px rgba(234, 120, 30, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(234, 120, 30, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(214, 40, 40, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(214, 40, 40, 0); }
 }
 
 .bus-marker > div {
   animation: bus-pulse 2s infinite;
+}
+
+/* Custom popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  border: none !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: none !important;
 }

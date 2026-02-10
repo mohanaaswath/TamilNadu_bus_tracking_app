@@ -3,7 +3,7 @@ import { Bus, Route } from "@/types/bus";
 import { routes } from "@/data/routes";
 import { haversineDistance, calculateETA, interpolate } from "@/utils/geo";
 
-const UPDATE_INTERVAL = 5000; // 5 seconds
+const UPDATE_INTERVAL = 2000; // 2 seconds for smoother animation
 const BASE_SPEED = 30; // km/h average
 
 function initBusesForDistrict(districtId: string): Bus[] {

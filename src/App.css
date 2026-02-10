@@ -1,42 +1,19 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Bus marker smooth animation */
+.bus-marker {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.leaflet-marker-icon.bus-marker {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Pulse effect on bus markers */
+@keyframes bus-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(234, 120, 30, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(234, 120, 30, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(234, 120, 30, 0); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.bus-marker > div {
+  animation: bus-pulse 2s infinite;
 }

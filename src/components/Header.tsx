@@ -13,7 +13,7 @@ const Header = ({ busCount, districtName }: HeaderProps) => {
           <BusIcon className="h-5 w-5" />
         </div>
         <div>
-          <h1 className="text-lg font-extrabold tracking-tight leading-tight">redBus</h1>
+          <h1 className="text-lg font-extrabold tracking-tight leading-tight">Bus Tracking App</h1>
           <p className="text-[11px] opacity-80 font-medium">Live Bus Tracking • Tamil Nadu</p>
         </div>
       </div>

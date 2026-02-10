@@ -11,15 +11,15 @@ const DistrictSelector = ({ selectedDistrict, onSelect }: DistrictSelectorProps)
 
   return (
     <div className="relative">
-      <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">
-        Select District
+      <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+        📍 Select District
       </label>
       <div className="relative">
         <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary" />
         <select
           value={selectedDistrict || ""}
           onChange={(e) => onSelect(e.target.value)}
-          className="w-full appearance-none rounded-lg border border-border bg-card pl-9 pr-10 py-2.5 text-sm font-medium text-card-foreground shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+          className="w-full appearance-none rounded-xl border border-border bg-card pl-9 pr-10 py-3 text-sm font-semibold text-card-foreground shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary hover:shadow-md"
         >
           <option value="">All Tamil Nadu</option>
           {districts.map((d) => (
@@ -31,8 +31,8 @@ const DistrictSelector = ({ selectedDistrict, onSelect }: DistrictSelectorProps)
         <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
       </div>
       {selected && (
-        <p className="mt-1 text-xs text-muted-foreground">
-          Center: {selected.centerLat.toFixed(4)}, {selected.centerLng.toFixed(4)}
+        <p className="mt-1.5 text-[11px] text-muted-foreground">
+          📌 {selected.centerLat.toFixed(4)}, {selected.centerLng.toFixed(4)}
         </p>
       )}
     </div>

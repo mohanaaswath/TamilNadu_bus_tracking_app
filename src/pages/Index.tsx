@@ -110,7 +110,7 @@ const Index = () => {
           <div className="absolute bottom-4 left-4 transit-panel px-3 py-2 text-xs text-muted-foreground">
             <span className="font-semibold text-foreground">38</span> Districts •{" "}
             <span className="font-semibold text-foreground">{routes.length}</span> Routes •{" "}
-            Updates every <span className="font-semibold text-foreground">5s</span>
+            Updates every <span className="font-semibold text-foreground">2s</span>
           </div>
         </main>
       </div>

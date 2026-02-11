@@ -15,7 +15,9 @@ const TN_ZOOM = 7;
 const DISTRICT_ZOOM = 11;
 
 const Index = () => {
-  const [selectedDistrictId, setSelectedDistrictId] = useState<string | null>(null);
+  const [selectedDistrictId, setSelectedDistrictId] = useState<string | null>(
+    null,
+  );
   const [selectedRoute, setSelectedRoute] = useState<Route | null>(null);
   const [selectedBus, setSelectedBus] = useState<Bus | null>(null);
 
@@ -23,7 +25,7 @@ const Index = () => {
 
   const selectedDistrict = useMemo(
     () => districts.find((d) => d.districtId === selectedDistrictId) || null,
-    [selectedDistrictId]
+    [selectedDistrictId],
   );
 
   const mapCenter: [number, number] = selectedDistrict
@@ -45,7 +47,9 @@ const Index = () => {
 
   const handleSelectBus = (bus: Bus) => {
     setSelectedBus(bus);
-    const route = routes.find((r) => r.routeId === bus.routeId && r.district === bus.district);
+    const route = routes.find(
+      (r) => r.routeId === bus.routeId && r.district === bus.district,
+    );
     if (route) setSelectedRoute(route);
   };
 
@@ -61,10 +65,10 @@ const Index = () => {
         districtName={selectedDistrict?.districtName || null}
       />
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 flex-col lg:flex-row lg:overflow-hidden">
         {/* Sidebar */}
-        <aside className="w-80 flex-shrink-0 bg-card border-r border-border flex flex-col overflow-hidden shadow-lg">
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
+        <aside className="w-full lg:w-80 flex-shrink-0 bg-card border-b border-border lg:border-b-0 lg:border-r flex flex-col lg:overflow-hidden shadow-lg">
+          <div className="flex-1 p-4 space-y-4 scrollbar-thin lg:overflow-y-auto">
             <DistrictSelector
               selectedDistrict={selectedDistrictId}
               onSelect={handleDistrictChange}
@@ -90,13 +94,16 @@ const Index = () => {
           {/* Bus detail panel at bottom */}
           {activeBus && (
             <div className="border-t border-border p-3 bg-card">
-              <BusInfoPanel bus={activeBus} onClose={() => setSelectedBus(null)} />
+              <BusInfoPanel
+                bus={activeBus}
+                onClose={() => setSelectedBus(null)}
+              />
             </div>
           )}
         </aside>
 
         {/* Map */}
-        <main className="flex-1 relative">
+        <main className="flex-1 relative min-h-[45vh] lg:min-h-0">
           <MapView
             center={mapCenter}
             zoom={mapZoom}
@@ -106,10 +113,11 @@ const Index = () => {
           />
 
           {/* Stats overlay */}
-          <div className="absolute bottom-4 left-4 bg-card/95 backdrop-blur-sm border border-border rounded-xl px-4 py-2.5 text-xs text-muted-foreground shadow-lg">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 sm:bottom-4 sm:left-4 sm:translate-x-0 bg-card/95 backdrop-blur-sm border border-border rounded-xl px-4 py-2.5 text-xs text-muted-foreground shadow-lg">
             <span className="font-bold text-primary">38</span> Districts •{" "}
-            <span className="font-bold text-primary">{routes.length}</span> Routes •{" "}
-            Updates every <span className="font-bold text-primary">2s</span>
+            <span className="font-bold text-primary">{routes.length}</span>{" "}
+            Routes • Updates every{" "}
+            <span className="font-bold text-primary">2s</span>
           </div>
         </main>
       </div>

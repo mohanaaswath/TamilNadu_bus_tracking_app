@@ -153,3 +153,54 @@
     border-radius: 999px;
   }
 }
+
+@media (max-width: 640px) {
+  header {
+    gap: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  header h1 {
+    font-size: 1rem;
+  }
+
+  header p {
+    font-size: 0.625rem;
+  }
+
+  header .rounded-full {
+    padding: 0.25rem 0.5rem;
+  }
+
+  aside {
+    max-height: 55vh;
+  }
+
+  .leaflet-container {
+    min-height: 45vh;
+  }
+
+  .transit-panel {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  aside {
+    max-height: 50vh;
+  }
+
+  .leaflet-container {
+    min-height: 50vh;
+  }
+
+  .transit-panel {
+    padding: 0.875rem;
+  }
+}
